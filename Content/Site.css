@@ -1,0 +1,269 @@
+﻿/* Resetting default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.custom-btn {
+    background-color: #006d3e;
+    border-color: #006d3e;
+}
+
+    .custom-btn:hover {
+        background-color: #00562f;
+        border-color: #00562f;
+    }
+
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+
+    .body-content {
+        padding: 0;
+    }
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 0px;
+}
+/*================================================*/
+
+/* Global typography */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #000; /* Default text color */
+}
+
+.body-content {
+    background-color: #000; /* White background color */
+    color: #fff; /* Black text color */
+    padding: 20px;
+}
+
+/* Navbar styles */
+.navbar-custom {
+    background-color: rgba(0, 0, 0, 50); /* Green background color */
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.navbar-collapse.collapse.in {
+    display: block !important;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center; /* Center vertically */
+    padding-right: 20px;
+    padding-left: 20px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important; /* Align navbar items to the right */
+}
+
+    .navbar-nav .nav-item {
+        margin-left: 10px; /* Adjust spacing between navbar items */
+    }
+
+.nav-link {
+    color: #ffffff !important; /* White text color */
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700 !important;
+    position: relative;
+}
+
+    .nav-link:hover {
+        color: #b6c4b5;
+    }
+
+    .nav-link::after {
+        content: '';
+        width: 0;
+        height: 3px;
+        background: #ffffff;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: 0.5s;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px;
+}
+
+    ul li a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700 !important;
+        position: relative;
+    }
+
+a:hover {
+    text-decoration: none;
+    color: #006d3e;
+}
+
+ul li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ffffff;
+    color: #006d3e;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: 0.5s;
+}
+
+ul li a:hover::after {
+    width: 100%;
+    color: #006d3e;
+}
+
+@media (max-width: 576px) {
+    .nav-item {
+        width: 100%;
+        text-align: left;
+    }
+
+    .v-line {
+        display: none;
+    }
+}
+
+
+.v-line {
+    background-color: gray;
+    width: 1px;
+    height: 20px;
+}
+
+/* Background container */
+.background-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    background-image: url('../Images/ZalgirisBG_ready.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat-y;
+    z-index: 0;
+}
+
+/* Main content container */
+.container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0);
+    padding-right: 5%;
+    padding-left: 5%;
+    color: #fff;
+    text-align: center; /* Center align content horizontally */
+    height: 100%; /* Ensure the container takes up the full height */
+}
+
+.flex-container {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 1920px !important;
+}
+
+/* Main content area */
+.container-fluid {
+    flex-grow: 1 !important;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #000; /* Green background color */
+    color: #ffffff; /* White text color */
+    padding: 20px 0;
+    text-align: center; /* Center-align the content */
+}
+
+.c-footer {
+    background-color: #682b83;
+    color: #ffffff;
+    padding-top: 16px;
+    border-top: none;
+}
+
+/*------------------------------------*/
+
+.header-text {
+    text-align: center;
+    padding-top: 40px;
+}
+
+    .header-text .display-4 {
+        font-weight: 800 !important; /* Override the Bootstrap display-4 class */
+    }
+
+/* Add color to specific text */
+.zalgiris-color {
+    color: #3db36a;
+}
+
+.zalia-balta {
+    font-size: 20px;
+    font-weight: 600;
+}
+/*========================*/
+#about-tabs {
+    padding: 5px 0;
+}
+
+.about-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+    grid-gap: 30px;
+    margin-top: 10px;
+}
+
+    .about-list div {
+        background: rgba(38, 38, 38, 0.8); /* Change the opacity here */
+        padding: 20px;
+        font-size: 13px;
+        font-weight: 300;
+        border-radius: 10px;
+        transition: background 0.5s, transform 0.5s;
+    }
+
+        .about-list div p {
+            font-size: 16px;
+        }
+
+        .about-list div i {
+            color: #3db36a;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .about-list div:hover {
+            background: rgba(0, 109, 62, 0.8); /* Change the opacity here */
+            transform: translateY(-10px);
+        }
