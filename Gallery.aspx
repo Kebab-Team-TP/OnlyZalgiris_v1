@@ -33,43 +33,43 @@
     <div class="gallery-container">
         <!-- Image 1 -->
         <div class="gallery-item">
-            <img src="Images/1367304-161641-1287x836.jpg" alt="Image 1 Description">
+            <img src="Images/1367304-161641-1287x836.jpg" alt="zalgiris">
         </div>
         <!-- Image 2 -->
         <div class="gallery-item">
-            <img src="Images/1683138729890-1024x683.jpg" alt="Image 2 Description">
+            <img src="Images/1683138729890-1024x683.jpg" alt="zalgiris">
         </div>
         <!-- Image 3 -->
         <div class="gallery-item">
-            <img src="Images/1686070211549-1024x684.jpg" alt="Image 3 Description">
+            <img src="Images/1686070211549-1024x684.jpg" alt="zalgiris">
         </div>
         <!-- Image 4 -->
         <div class="gallery-item">
-            <img src="Images/1686070255323-1024x683.jpg" alt="Image 4 Description">
+            <img src="Images/1686070255323-1024x683.jpg" alt="zalgiris">
         </div>
         <!-- Image 5 -->
         <div class="gallery-item">
-            <img src="Images/6bc58ca0-7dfd-11ed-ab81-a71b60a80a19.jpg" alt="Image 5 Description">
+            <img src="Images/6bc58ca0-7dfd-11ed-ab81-a71b60a80a19.jpg" alt="zalgiris">
         </div>
         <!-- Image 6 -->
         <div class="gallery-item">
-            <img src="Images/acbe203e2fca0aaf17cc29402ff7c3dd.jpg" alt="Image 6 Description">
+            <img src="Images/acbe203e2fca0aaf17cc29402ff7c3dd.jpg" alt="zalgiris">
         </div>
         <!-- Image 7 -->
         <div class="gallery-item">
-            <img src="Images/ad318d629cf51b6c11f09f63296b0268.jpg" alt="Image 7 Description">
+            <img src="Images/ad318d629cf51b6c11f09f63296b0268.jpg"alt="zalgiris">
         </div>
         <!-- Image 8 -->
         <div class="gallery-item">
-            <img src="Images/F3zZR3NWYAAP4Ph.jpeg" alt="Image 8 Description">
+            <img src="Images/F3zZR3NWYAAP4Ph.jpeg" alt="zalgiris">
         </div>
         <!-- Image 9 -->
         <div class="gallery-item">
-            <img src="Images/unnamed.jpg" alt="Image 9 Description">
+            <img src="Images/3dec5e00-e9d5-11ed-be0d-01badd26f64f.jpg" alt="zalgiris">
         </div>
         <!-- Image 10 -->
         <div class="gallery-item">
-            <img src="Images/ZalgirioArena20160420-1.jpg" alt="Image 10 Description">
+            <img src="Images/ZalgirioArena20160420-1.jpg" alt="zalgiris">
         </div>
     </div>
 </asp:Content>
