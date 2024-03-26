@@ -41,7 +41,7 @@
                                     <a href="#">Team (WiP)</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">Gallery</a>
+                                    <a href="<%= ResolveUrl("~/Gallery.aspx") %>">Gallery</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#">Forum (WiP)</a>
