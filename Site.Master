@@ -22,8 +22,8 @@
 </head>
 <body>
     <form runat="server">
-        <div class="flex-container">
-            <div class="container-fluid px-0">
+        <div class="">
+            <div class="px-0">
                 <nav id="mainNav" class="navbar navbar-expand navbar-custom">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="<%= ResolveUrl("~/Default.aspx") %>">

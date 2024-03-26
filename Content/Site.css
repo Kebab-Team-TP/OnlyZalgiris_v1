@@ -189,12 +189,11 @@ ul li a:hover::after {
 .flex-container {
     display: flex !important;
     flex-direction: column !important;
-    min-height: 1920px !important;
 }
 
 /* Main content area */
 .container-fluid {
-    flex-grow: 1 !important;
+    flex-grow: 1;
 }
 
 /* Footer styles */
@@ -267,3 +266,61 @@ ul li a:hover::after {
             background: rgba(0, 109, 62, 0.8); /* Change the opacity here */
             transform: translateY(-10px);
         }
+
+
+.schedule-header {
+    text-align:center;
+    padding: 20px;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust top margin as needed */
+    width: 70% !important; /* Set the table container to 60% of the screen width */
+    margin: auto; /* Center the container horizontally */
+}
+
+.schedule-table {
+    width: 100% !important;
+    overflow-x: auto;
+}
+
+.schedule {
+    width: 100% !important;
+    margin-bottom: 0;
+    border: 1px solid #D8D8D8;
+    border-collapse: collapse;
+}
+
+    .schedule th, .schedule td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #D8D8D8;
+    }
+
+    .schedule th {
+        background-color: #006d3e !important;
+        color: #FFF !important;
+        text-transform: uppercase;
+    }
+
+    .schedule .team-wrap {
+        display: flex;
+        align-items: center;
+    }
+
+    .schedule .team {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .schedule .team-logo {
+        margin-right: 10px;
+    }
+
+    .schedule img {
+        max-height: 50px;
+        max-width: 50px;
+    }
