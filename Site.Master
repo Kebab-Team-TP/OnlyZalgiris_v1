@@ -38,7 +38,7 @@
                                     <a href="<%= ResolveUrl("~/Schedule.aspx") %>">Schedule</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">Team (WiP)</a>
+                                    <a href="<%= ResolveUrl("~/TeamMembers/TeamMembers.aspx") %>">Team</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="<%= ResolveUrl("~/Gallery.aspx") %>">Gallery</a>
