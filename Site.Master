@@ -44,6 +44,9 @@
                                     <a href="<%= ResolveUrl("~/Gallery.aspx") %>">Gallery</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="<%= ResolveUrl("~/ArticleScraper/Articles.aspx") %>">Articles</a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="#">Forum (WiP)</a>
                                 </li>
                                 <li class="nav-item">
