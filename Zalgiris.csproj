@@ -195,6 +195,10 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="ArticleScraper\Articles.aspx" />
+    <Content Include="ArticleScraper\BasketNewsLogo.png" />
+    <Content Include="ArticleScraper\BasketNewsLogo50x50.png" />
+    <Content Include="ArticleScraper\ZalgirisLogo.png" />
+    <Content Include="ArticleScraper\ZalgirisLogo50x50.png" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

@@ -5,6 +5,11 @@ using System.Web;
 
 namespace Zalgiris.ArticleScraper
 {
+    public enum ArticleSources 
+    {
+        Zal,
+        BN
+    }
     public class Article
     {
         public string Description { get; set; } // Short description about the article
@@ -12,6 +17,7 @@ namespace Zalgiris.ArticleScraper
         public string ArticleUrl { get; set; }
         public string Date { get; set; }
         public string Name { get; set; }
+        public ArticleSources Source { get; set; }
 
         public Article(string description, string imageUrl, string articleUrl)
         {
@@ -29,9 +35,15 @@ namespace Zalgiris.ArticleScraper
         {
             Name = name;
         }
+
+        public Article(string description, string imageUrl, string articleUrl, string date, string name, ArticleSources source) : this(description, imageUrl, articleUrl, date, name)
+        {
+            Source = source;
+        }
+
         public override string ToString()
         {
-            return $"Article Name: {Name}\nDescription: {Description}\nImage URL: {ImageUrl}\nArticle URL: {ArticleUrl}\nDate: {Date}";
+            return $"Article Name: {Name}\nDescription: {Description}\nImage URL: {ImageUrl}\nArticle URL: {ArticleUrl}\nDate: {Date.ToString()}";
         }
     }
 }
