@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Policy;
@@ -136,8 +137,17 @@ namespace Zalgiris.ArticleScraper
                 string imgUrl = "https://www.basketnews.lt" + imgNode?.GetAttributeValue("src", "").Trim();
                 string articleUrl = "https://www.basketnews.lt" + articleNode?.GetAttributeValue("href", "");
                 //string date = dateNode?.InnerText.Trim();
-                DateTime datetime = DateTime.Parse(dateNode?.InnerText.Trim());
-                string date = datetime.ToString("yyyy/MM/dd");
+                // Jei naujas straipsnis rasoma: Prieš xx min., jei taip, rodyti šiandienos datą
+                DateTime dateTime;
+                string date;
+                if (DateTime.TryParseExact(dateNode?.InnerText.Trim(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime)) 
+                {
+                    date = dateTime.ToString("yyyy/MM/dd");
+                }
+                else 
+                {
+                    date = DateTime.Today.ToString("yyyy/MM/dd");
+                }
                 string description = descriptionNode?.InnerText.Trim();
                 string name = nameNode?.InnerText.Trim().Replace("\n", "");
                 name = Regex.Replace(name, @"\s+", " ");
