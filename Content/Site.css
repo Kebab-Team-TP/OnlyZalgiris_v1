@@ -486,3 +486,30 @@ h1.heading {
     height: 100%;
     object-fit: cover; /* or "contain" depending on your preference */
 }
+.login {
+    min-height: 100vh;
+}
+
+.bg-image {
+    background-image: url('/Images/Onlyz.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.login-heading {
+    font-weight: 300;
+}
+
+.btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+}
+.btn-zalgiris {
+    background-color: #3db36a;
+    border-color: #215f38;
+    color: #fff;
+}
+.text-zalgiris {
+    color: #3db36a;
+}
