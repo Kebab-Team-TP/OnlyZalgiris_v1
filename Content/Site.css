@@ -513,3 +513,10 @@ h1.heading {
 .text-zalgiris {
     color: #3db36a;
 }
+.d-grid {
+    justify-content: center;
+}
+
+.login-btn {
+    width: 50%; /* Adjust the width as needed */
+}
