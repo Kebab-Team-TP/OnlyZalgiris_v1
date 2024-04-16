@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Articles.aspx.cs" Inherits="Zalgiris.ArticleScraper.Articles" Async="true" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h1 class ="schedule-header">Naujausios Straipsniai</h1>
+    <h1 class ="schedule-header">Naujausi Straipsniai</h1>
         <asp:Repeater ID="rptResults1" runat="server">
             <ItemTemplate>
                 <div class="outer-card-padding">
