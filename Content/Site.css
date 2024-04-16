@@ -520,3 +520,18 @@ h1.heading {
 .login-btn {
     width: 50%; /* Adjust the width as needed */
 }
+.stat {
+    font-size: 12px;
+    display: inline-block;
+    padding: 5px;
+}
+
+    .stat .number {
+        font-size: 15px;
+        color: #3db36a;
+        font-weight: bold;
+    }
+
+a.card {
+    text-decoration: none;
+}

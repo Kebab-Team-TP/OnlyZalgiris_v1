@@ -27,7 +27,7 @@
                 <nav id="mainNav" class="navbar navbar-expand navbar-custom">
                     <div class="container-fluid">
                         <a class="navbar-brand" href="<%= ResolveUrl("~/Default.aspx") %>">
-                            <img id="logo" src="Images\logo-web.png">
+                            <img id="logo" src="/Images/logo-web.png">
                         </a>
                         <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -65,7 +65,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <footer class="footer" style="width: 100%; margin-top: -20px;">
+        <footer class="footer" style="width: 100%">
 
             <div class="container-fluid">
                 <div class="row">
