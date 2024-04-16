@@ -1,30 +1,13 @@
-﻿using Microsoft.Ajax.Utilities;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Text.Json;
-using System.IO;
-using Antlr.Runtime.Tree;
-using Microsoft.AspNet.FriendlyUrls;
+﻿using System;
 using Zalgiris.App;
 using Zalgiris.Models;
 
 namespace Zalgiris
 {
-    
-
     public partial class Register : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            
             string username = Request.Form["username"];
             string password = Request.Form["password"];
             string email = Request.Form["email"];
@@ -35,6 +18,19 @@ namespace Zalgiris
                 newUser.Password = password;
                 newUser.Email = email;
                 newUser.IsAdmin = false;
+
+                /*
+                 * Determining whether a new user is admin
+                 * Admin has to enter characters *&! in the beginning
+                 * if he wants to have admin privileges
+                */
+                char[] usernameChars = username.ToCharArray();
+                if (usernameChars[0] == '*' && usernameChars[1] == '&' && usernameChars[2] == '!')
+                    newUser.IsAdmin = true;
+                else
+                    newUser.IsAdmin = false;
+                //--------------------------------
+
                 try
                 {
                     UsersController.Add(newUser);

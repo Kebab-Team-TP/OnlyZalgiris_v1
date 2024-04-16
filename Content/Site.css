@@ -50,6 +50,8 @@ body {
     padding: 20px;
 }
 
+
+
 /* Navbar styles */
 .navbar-custom {
     background-color: rgba(0, 0, 0, 50); /* Green background color */
@@ -324,3 +326,30 @@ ul li a:hover::after {
         max-height: 50px;
         max-width: 50px;
     }
+
+.user-logo {
+    width:40px !important;
+    height:40px !important;
+}
+
+.table-responsive {
+    max-width:80%;
+    padding-top: 20px;
+    margin: 0 auto !important;
+}
+
+/* Optional: Customize button styles */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+.admin-button-master {
+    padding: 10px 10px !important;
+    margin: 10px 10px !important;
+}
