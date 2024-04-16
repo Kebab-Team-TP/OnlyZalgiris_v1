@@ -202,6 +202,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="ArticleScraper\Articles.aspx" />
+    <Content Include="ArticleScraper\BasketNewsLogo.png" />
+    <Content Include="ArticleScraper\BasketNewsLogo50x50.png" />
+    <Content Include="ArticleScraper\ZalgirisLogo.png" />
+    <Content Include="ArticleScraper\ZalgirisLogo50x50.png" />
     <Content Include="Admin.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -294,6 +300,14 @@
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ArticleScraper\Article.cs" />
+    <Compile Include="ArticleScraper\Articles.aspx.cs">
+      <DependentUpon>Articles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ArticleScraper\Articles.aspx.designer.cs">
+      <DependentUpon>Articles.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -356,6 +370,7 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="TeamMembers\Member.cs" />
     <Compile Include="TeamMembers\Player.cs" />
     <Compile Include="TeamMembers\Staff.cs" />
     <Compile Include="TeamMembers\TeamMembers.aspx.cs">

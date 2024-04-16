@@ -1,26 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Text;
 using System.Web;
+using System.Security.Policy;
 
 namespace Zalgiris.TeamMembers
 {
-    public class Staff
+    public class Staff : Member
     {
-        public string Name { get; set; }
-        public string Role { get; set; } // Staff role
-        public string ImageLink { get; set; }
-
-        public Staff(string name, string role, string imageLink)
+        public Staff(string name, string role, string imageLink) : base(name, role, imageLink)
         {
-            Name = name;
-            Role = role;
-            ImageLink = imageLink;
+
         }
 
-        public override string ToString()
-        {
-            return Name + " " + Role;
-        }
+        
     }
 }

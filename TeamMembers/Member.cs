@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Text;
@@ -7,20 +6,32 @@ using System.Web;
 
 namespace Zalgiris.TeamMembers
 {
-    public class Player : Member
+
+    public abstract class Member
     {
-        public string Number { get; set; }
-        public string Points { get; set; }
-
-
-        public Player(string number, string name, string position, string imageLink): base(name, position, imageLink)
+        public string Name { get; set; }
+        public string Position { get; set; } // For both players and staff
+        public string ImageLink { get; set; }
+        public string Slug { get; set; }
+        public string Height { get; set; }
+        public string Age { get; set; }
+        public string Info { get; set; }
+        public string Weigth { get; set; }
+        public Member(string name, string position, string imageLink)
         {
-            Number = number;
+            Name = name;
+            Position = position;
+            ImageLink = imageLink;
+            Slug = ToUrlSlug(name);
+            Height = "";
+            Age = "";
+            Weigth = "";
+            Info = "";
         }
 
         public override string ToString()
         {
-            return Number + " " + Name + " " + Position;
+            return Name + " " + Position;
         }
         public static string ToUrlSlug(string value)
         {
