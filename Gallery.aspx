@@ -1,34 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Gallery.aspx.cs" Inherits="Zalgiris.Gallery" %>
 
 <asp:Content ID="GalleryContent" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        .gallery-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            padding: 20px;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
-        @media (max-width: 600px) {
-            .gallery-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+
 
     <div class="gallery-container">
         <!-- Image 1 -->

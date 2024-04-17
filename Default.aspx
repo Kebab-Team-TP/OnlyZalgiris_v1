@@ -1,13 +1,20 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Zalgiris._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Zalgiris._Default" Async="true" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
     <div class="background-container">
         <div class="container text-center">
+            <!-- Live Scores / No Match Message -->
+            <!-- Live Scores / No Match Message -->
+
+            <div id="liveScoresContainer" class="live-scores-alert">
+                <asp:Literal ID="LiveScoresLiteral" runat="server"></asp:Literal>
+            </div>
+            <!-- Header -->
             <div class="header-text">
-                <div class="header-text">
-                    <h1 class="display-4">Welcome to Only<span class="zalgiris-color">Žalgiris</span></h1>
-                    <p class="lead">Your source for all things related to Žalgiris basketball team.</p>
-                </div>
+                <h1 class="display-4">Welcome to Only<span class="zalgiris-color">Žalgiris</span></h1>
+                <p class="lead">Your source for all things related to Žalgiris basketball team.</p>
+            </div>
             </div>
             <div class="row justify-content-center">
                 <div class="mt-5">

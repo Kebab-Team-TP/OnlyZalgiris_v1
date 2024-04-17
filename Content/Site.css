@@ -520,3 +520,60 @@ h1.heading {
 .login-btn {
     width: 50%; /* Adjust the width as needed */
 }
+/* Live Scores Alert */
+.live-scores-alert {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #004d40; /* Darker shade for contrast */
+    color: #ffffff;
+    font-size: 1.2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+
+    .live-scores-alert:hover {
+        transform: translateY(-5px);
+        background: linear-gradient(to right, #003d20, #00562f);
+    }
+
+
+.live-match-info {
+    background-color: #00695c; /* Slightly lighter than container for distinction */
+    color: #ffffff;
+    padding: 15px;
+    margin-top: 10px; /* Space from the top */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+@media (max-width: 600px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+}
