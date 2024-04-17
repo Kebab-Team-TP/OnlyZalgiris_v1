@@ -233,6 +233,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Drivers\chromedriver.exe" />
+    <Content Include="Drivers\edgedriver_win64\Driver_Notes\credits.html" />
+    <Content Include="Drivers\edgedriver_win64\msedgedriver.exe" />
+    <Content Include="Drivers\geckodriver.exe" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Gallery.aspx" />
@@ -261,6 +265,8 @@
     <Content Include="Login.aspx" />
     <Content Include="README.md" />
     <Content Include=".gitignore" />
+    <Content Include="Drivers\edgedriver_win64\Driver_Notes\EULA" />
+    <Content Include="Drivers\edgedriver_win64\Driver_Notes\LICENSE" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Images\logo-web.png" />
     <Content Include="Images\Onlyz.png" />

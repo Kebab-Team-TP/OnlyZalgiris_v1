@@ -1,31 +1,6 @@
 ﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Login.aspx.cs" Inherits="Zalgiris.Login" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        /*Style čia įdėjau, jei kartais scale'inimas taikomas per mažas visiems puslapiam, o ne tik šitam*/
-        /* Custom CSS to increase the size of form elements */
-        .form-outline label,
-        .form-outline input,
-        .form-check-label {
-            font-size: 1.75rem; /* Increase font size */
-            padding: 1rem; /* Increase padding */
-        }
-
-        .custom-btn {
-            font-size: 2rem; /* Increase font size for button */
-            padding: 1rem 2.25rem; /* Increase padding for button */
-        }
-
-        .link-secondary {
-            font-size: 1.5rem; /* Increase font size for link */
-        }
-
-        h3.text-dark {
-            font-size: 2.25rem; /* Increase font size for header */
-            margin-bottom: 2rem; /* Increase bottom margin for header */
-            font-weight: 700;
-        }
-    </style>
     <form id="loginForm" method="post" action="Login.aspx">
         <div>
             <asp:Label ID="Label1" runat="server" Text=""
