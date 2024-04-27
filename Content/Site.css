@@ -50,6 +50,8 @@ body {
     padding: 20px;
 }
 
+
+
 /* Navbar styles */
 .navbar-custom {
     background-color: rgba(0, 0, 0, 50); /* Green background color */
@@ -521,6 +523,93 @@ h1.heading {
     width: 50%; /* Adjust the width as needed */
 }
 
+.stat {
+    font-size: 12px;
+    display: inline-block;
+    padding: 5px;
+}
+
+    .stat .number {
+        font-size: 15px;
+        color: #3db36a;
+        font-weight: bold;
+    }
+
+a.card {
+    text-decoration: none;
+}
+
+.user-logo {
+    width: 40px !important;
+    height: 40px !important;
+}
+
+.table-responsive {
+    max-width: 80%;
+    padding-top: 20px;
+    margin: 0 auto !important;
+}
+
+/* Optional: Customize button styles */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+.admin-button-master {
+    padding: 10px 10px !important;
+    margin: 10px 10px !important;
+}
+}
+.stat {
+    font-size: 12px;
+    display: inline-block;
+    padding: 5px;
+}
+
+    .stat .number {
+        font-size: 15px;
+        color: #3db36a;
+        font-weight: bold;
+    }
+
+a.card {
+    text-decoration: none;
+}
+
+.user-logo {
+    width:40px !important;
+    height:40px !important;
+}
+
+.table-responsive {
+    max-width:80%;
+    padding-top: 20px;
+    margin: 0 auto !important;
+}
+
+/* Optional: Customize button styles */
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+.admin-button-master {
+    padding: 10px 10px !important;
+    margin: 10px 10px !important;
+}
+}
+
 
 
     .live-scores-alert:hover {
@@ -624,6 +713,132 @@ h3.text-dark {
     margin-bottom: 2rem; /* Increase bottom margin for header */
     font-weight: 700;
 }
+.form-outline label,
+.form-outline input,
+.form-check-input {
+    font-size: 1.5rem; /* Increase font size */
+    padding: 0.75rem; /* Increase padding */
+}
+
+.custom-btn {
+    font-size: 2rem; /* Increase font size for button */
+    padding: 1rem 2.25rem; /* Increase padding for button */
+}
+
+h3.text-dark {
+    font-size: 2.25rem; /* Increase font size for header */
+    margin-bottom: 2rem; /* Increase bottom margin for header */
+    font-weight: 700;
+}
+
+.link-secondary {
+    font-size: 1.5rem; /* Increase font size for link */
+}
+
+
+.live-scores-alert:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(to right, #133f13, #1f7d1f); /* Dark green gradient */
+}
+
+
+
+.live-match-info {
+    background-color: rgba(0, 109, 62, 0.8);
+    color: #ffffff;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px; /* Rounded corners for a softer, modern look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Roboto', sans-serif; /* Modern sans-serif font */
+}
+
+    .live-match-info h2 {
+        font-size: 2.5rem; /* Even larger font size for headings */
+        margin-bottom: 10px; /* Provide some spacing below the heading */
+    }
+
+    .live-match-info p {
+        font-size: 1.5rem; /* Larger font size for regular text */
+    }
+
+.live-scores-alert {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(27, 94, 32, 0.8);
+    color: #ffffff;
+    font-size: 2em; /* Even larger font size for the entire alert */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+    .live-scores-alert h2 {
+        font-size: 2.5rem; /* Even larger font size for headings */
+        margin-bottom: 10px; /* Provide some spacing below the heading */
+    }
+
+    .live-scores-alert p {
+        font-size: 1.5rem; /* Larger font size for regular text */
+    }
+
+
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+
+@media (max-width: 600px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-outline label,
+.form-outline input,
+.form-check-label {
+    font-size: 1.75rem; /* Increase font size */
+    padding: 1rem; /* Increase padding */
+}
+
+.custom-btn {
+    font-size: 2rem; /* Increase font size for button */
+    padding: 1rem 2.25rem; /* Increase padding for button */
+}
+
+.link-secondary {
+    font-size: 1.5rem; /* Increase font size for link */
+}
+
+h3.text-dark {
+    font-size: 2.25rem; /* Increase font size for header */
+    margin-bottom: 2rem; /* Increase bottom margin for header */
+    font-weight: 700;
+}
+
 .form-outline label,
 .form-outline input,
 .form-check-input {

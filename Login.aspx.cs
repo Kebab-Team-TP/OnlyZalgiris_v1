@@ -1,17 +1,9 @@
-﻿using Microsoft.Ajax.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Text.Json;
 using System.IO;
-using Antlr.Runtime.Tree;
 using Zalgiris.Models;
 using Zalgiris.App;
-using System.Web.Services.Description;
 
 namespace Zalgiris
 {
@@ -40,19 +32,31 @@ namespace Zalgiris
             List<User> users = UsersController.GetAll(); // Assuming this method deserializes the JSON to a List<User>
 
             // Authenticate the user
-            bool isAuthenticated = users.Any(user => user.Username == username && user.Password == password);
+            User authenticatedUser = users.FirstOrDefault(user => user.Username == username && user.Password == password);
 
-            if (isAuthenticated)
+            if (authenticatedUser != null)
             {
-                Session["UserName"] = username;
+                // Set authenticated user's session variables
+                Session["UserName"] = authenticatedUser.Username;
                 Session["authenticated"] = true;
-                Response.Redirect("/"); // Redirect to home page on successful login
+
+                // Check if the authenticated user is an admin
+                if (authenticatedUser.IsAdmin)
+                {
+                    Session["IsAdmin"] = true; // Set IsAdmin session variable to true for admins
+                    Session["authorized"] = true;
+                    Response.Redirect("~/Admin.aspx");
+                }
+                else
+                {
+                    Response.Redirect("/");
+                }
             }
             else
             {
-                // Optionally, display a login failed message. Make sure to add a Literal or Label control with ID="Message" in your ASPX page.
-                ExceptionLabel.Visible = true; // Make sure the label is visible
-                ExceptionLabel.Text = "Prisijungti nepavyko. Bandykite dar kartą.";
+                // Optionally, display a login failed message.
+                ExceptionLabel.Visible = true;
+                ExceptionLabel.Text = "Login failed. Try again.";
             }
         }
 
