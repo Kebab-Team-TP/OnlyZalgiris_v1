@@ -511,6 +511,11 @@ h1.heading {
     background-color: #3db36a;
     border-color: #215f38;
     color: #fff;
+    font-size: 2rem; /* Increase font size for button */
+    background-color: #006d3e;
+    border-color: #006d3e;
+    font-size: 1.75rem;
+    padding: 1rem 2.25rem; /* Increase padding for button */
 }
 .text-zalgiris {
     color: #3db36a;
@@ -847,7 +852,7 @@ h3.text-dark {
 }
 
 .custom-btn {
-    font-size: 2rem; /* Increase font size for button */
+    font-size: 1.5rem; /* Increase font size for button */
     padding: 1rem 2.25rem; /* Increase padding for button */
 }
 
@@ -861,7 +866,7 @@ h3.text-dark {
     font-size: 1.5rem; /* Increase font size for link */
 }
 /*Login Background container */
-.background-container {
+.background-login-container {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -871,4 +876,8 @@ h3.text-dark {
     background-repeat: repeat-y;
     z-index: 0;
     min-height: 80vh;
+}
+.form-checkbox {
+    display: flex;
+    align-items: center;
 }
