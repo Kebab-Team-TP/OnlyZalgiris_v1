@@ -881,3 +881,44 @@ h3.text-dark {
     display: flex;
     align-items: center;
 }
+.pageNumbers {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #3db36a !important;
+    text-decoration: none;
+    position: center;
+    display: flex;
+    justify-content: center;
+    /* margin-left: 1rem;
+    margin-right: 1rem;*/
+}
+
+    .pageNumbers .panel {
+        display: inline-block;
+        color: #3db36a !important;
+    }
+
+    .pageNumbers td {
+        padding: 10px; /* Add padding to create space between page numbers */
+        color: #3db36a !important;
+    }
+
+        /* Optional: You can adjust the space between page numbers by changing the margin */
+        .pageNumbers td {
+            margin: 0 5px; /* Adjust the left and right margin as needed */
+            color: #3db36a !important;
+        }
+    .pageNumber:hover {
+        color: #215f38; /* Set the color of the page numbers on hover to black */
+    }
+.pageNumber {
+    color: #3db36a !important;
+}
+.activePage {
+    font-weight: bold; /* Highlight the active page number */
+
+    color: #3db36a !important;
+}
+.float-left {
+    position: center;
+}

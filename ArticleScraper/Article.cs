@@ -19,6 +19,10 @@ namespace Zalgiris.ArticleScraper
         public string Name { get; set; }
         public ArticleSources Source { get; set; }
 
+        public Article()
+        {
+        }
+
         public Article(string description, string imageUrl, string articleUrl)
         {
             Description = description;

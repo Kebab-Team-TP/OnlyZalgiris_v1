@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,18 +17,81 @@ namespace Zalgiris.ArticleScraper
 {
     public partial class Articles : System.Web.UI.Page
     {
-        protected List<Article> articles = new List<Article>();
+        protected List<Article> articlesJSON = new List<Article>();
+        protected int currentPage = 1;
         protected async void Page_Load(object sender, EventArgs e)
         {
             // Check if it's a postback to prevent reloading on every postback
             if (!IsPostBack)
             {
                 await FindArticles();
-                articles = articles.OrderByDescending(article => DateTime.Parse(article.Date)).ToList();
-                rptResults1.DataSource = articles;
-                rptResults1.DataBind();
+                BindArticles(currentPage);
+                BindPageinationControls(currentPage);
             }
-            var testArticles = articles;
+        }
+        private void BindArticles(int page) 
+        {
+            var articles = ArticleController.GetAll().OrderByDescending(article => DateTime.Parse(article.Date));
+            int articleCount = articles.Count();
+            int startIndex = (page - 1) * 25; // 25 articles per page
+            int endIndex = Math.Min(startIndex + 24, articleCount - 1);
+            
+            var articlesToDisplay = articles.Skip(startIndex)
+                .Take(endIndex - startIndex + 1).ToList();
+            rptResults1.DataSource = articlesToDisplay;
+            rptResults1.DataBind();
+
+        }
+        protected void Page_Changed(object sender, EventArgs e)
+        {
+            LinkButton btn = (sender as LinkButton);
+            currentPage = int.Parse(btn.Text);
+            BindArticles(currentPage);
+            BindPageinationControls(currentPage);
+        }
+        private void BindPageinationControls(int currentPage) 
+        {
+            var articles = ArticleController.GetAll().OrderByDescending(article => DateTime.Parse(article.Date));
+            int articleCount = articles.Count();
+
+            int totalPages = (int)Math.Ceiling((double)articleCount / 25);
+            List<object> pageNumbers = new List<object>();
+
+            // Add ellipsis and page numbers
+            const int numAdjacentPages = 2; // Number of adjacent pages to display on each side of the current page
+            const int numPagesAroundEllipsis = 1; // Number of pages around the ellipsis to display
+            const int minPageNumber = 1;
+
+            // Add the first page
+            pageNumbers.Add(new PaginationItem { PageNumber = 1, IsPageNumber = true });
+
+            // Add ellipsis if needed
+            if (currentPage - numAdjacentPages > minPageNumber + numPagesAroundEllipsis)
+            {
+                pageNumbers.Add(new PaginationItem { PageNumber = null, IsPageNumber = false }); // Ellipsis
+            }
+
+            // Add adjacent pages
+            for (int i = Math.Max(minPageNumber + numPagesAroundEllipsis, currentPage - numAdjacentPages);
+                     i <= Math.Min(currentPage + numAdjacentPages, totalPages); i++)
+            {
+                pageNumbers.Add(new PaginationItem { PageNumber = i, IsPageNumber = true });
+            }
+
+            // Add ellipsis if needed
+            if (currentPage + numAdjacentPages < totalPages - numPagesAroundEllipsis)
+            {
+                pageNumbers.Add(new PaginationItem { PageNumber = null, IsPageNumber = false }); // Ellipsis
+            }
+
+            // Add the last page
+            if (totalPages > minPageNumber)
+            {
+                pageNumbers.Add(new PaginationItem { PageNumber = totalPages, IsPageNumber = true });
+            }
+
+            rptPagination.DataSource = pageNumbers;
+            rptPagination.DataBind();
         }
         private async Task FindArticles()
         {
@@ -35,14 +99,23 @@ namespace Zalgiris.ArticleScraper
             // Find article page count 
             string htmlNr = await CallUrl("https://zalgiris.lt/news/bc-zalgiris/");
             int maxPage = GetPageCountZal(htmlNr);
-
+            bool stopScraping = false;
             // Scrape data from each page
             // Set to fixed number for speed instead of 900-ish
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= maxPage; i++)
             {
-                string urlZal = "https://zalgiris.lt/news/bc-zalgiris/page/" + i.ToString();
-                string htmlZal = await CallUrl(urlZal);
-                ParseHtmlZal(htmlZal);
+
+                if (stopScraping)
+                {
+                    break;
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("ZAL: {0} is {1} psl.", i, maxPage);
+                    string urlZal = "https://zalgiris.lt/news/bc-zalgiris/page/" + i.ToString();
+                    string htmlZal = await CallUrl(urlZal);
+                    ParseHtmlZal(htmlZal, out stopScraping);
+                }
             }
             // BasketNews
             string htmlNrBN = await CallUrl("https://www.basketnews.lt/komandos/265-kauno-zalgiris/naujienos.html");
@@ -50,11 +123,21 @@ namespace Zalgiris.ArticleScraper
             string baseUrl = "https://www.basketnews.lt/komandos/265-kauno-zalgiris/naujienos.html";
             // BN calculates page url by articles per page: a full page is concidered 29 articles long
             // Set to fixed number for speed
-            for (int i = 0; i <= 2 * 29; i += 29) 
+            stopScraping = false;
+            for (int i = 0; i <= maxPageBN*29; i += 29) 
             {
-                string urlBN = baseUrl.Replace(".html", $".{i.ToString()}.html");
-                string htmlBN = await CallUrl(urlBN);
-                ParseHtmlBN(htmlBN);
+                
+                if (stopScraping)
+                {
+                    break;
+                }
+                else 
+                {
+                    System.Diagnostics.Debug.WriteLine("BN: {0} is {1} psl.", i, maxPageBN*29);
+                    string urlBN = baseUrl.Replace(".html", $".{i.ToString()}.html");
+                    string htmlBN = await CallUrl(urlBN);
+                    ParseHtmlBN(htmlBN, out stopScraping);
+                }
             }
 
         }
@@ -66,8 +149,9 @@ namespace Zalgiris.ArticleScraper
             }
         }
         // Parse data from zalgiris.lt
-        private void ParseHtmlZal(string html) 
+        private void ParseHtmlZal(string html, out bool noNewArticles) 
         {
+            noNewArticles = false;
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
             // Get Articles from page
@@ -89,7 +173,20 @@ namespace Zalgiris.ArticleScraper
                 string name = nameNode?.InnerText.Trim();
                 string articleUrl = articleNode?.GetAttributeValue("href", "");
                 Article article = new Article(description, imgUrl, articleUrl, date, name, ArticleSources.Zal);
-                articles.Add(article);
+                //articles.Add(article);
+
+                // If article exists in JSON, stop script, because remaining articles will already be added
+                List<Article> currArticles = ArticleController.GetAll();
+                bool articleExists = currArticles.Any(a => a.Name == article.Name && a.Description == article.Description);
+                if (!articleExists)
+                {
+                    ArticleController.Add(article);
+                }
+                else 
+                {
+                    noNewArticles = true;
+                    break;
+                }
             }
         }
         /// <summary>
@@ -115,8 +212,9 @@ namespace Zalgiris.ArticleScraper
         /// Parses data from Basketnews.lt article page
         /// </summary>
         /// <param name="html">html from page</param>
-        private void ParseHtmlBN(string html) 
+        private void ParseHtmlBN(string html, out bool noNewArticles) 
         {
+            noNewArticles = false;
             HtmlDocument htmlDoc = new HtmlDocument();
             htmlDoc.LoadHtml(html);
             // Get Articles from page
@@ -153,7 +251,19 @@ namespace Zalgiris.ArticleScraper
                 name = Regex.Replace(name, @"\s+", " ");
                 //string articleUrl = articleNode?.GetAttributeValue("href", "");
                 Article article = new Article(description, imgUrl, articleUrl, date, name, ArticleSources.BN);
-                articles.Add(article);
+                //articles.Add(article);
+                // If article exists in JSON, stop script, because remaining articles will already be added
+                List<Article> currArticles = ArticleController.GetAll();
+                bool articleExists = currArticles.Any(a => a.Name == article.Name && a.Description == article.Description);
+                if (!articleExists)
+                {
+                    ArticleController.Add(article);
+                }
+                else
+                {
+                    noNewArticles = true;
+                    break;
+                }
             }
         }
         /// <summary>

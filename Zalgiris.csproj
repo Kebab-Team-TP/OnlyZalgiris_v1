@@ -280,6 +280,7 @@
     <Content Include="Drivers\edgedriver_win64\Driver_Notes\EULA" />
     <Content Include="Drivers\edgedriver_win64\Driver_Notes\LICENSE" />
     <Content Include="App_Data\Forum.json" />
+    <Content Include="App_Data\Articles.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Images\logo-web.png" />
     <Content Include="Images\Onlyz.png" />
@@ -337,6 +338,7 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="ArticleScraper\Article.cs" />
+    <Compile Include="ArticleScraper\ArticleController.cs" />
     <Compile Include="ArticleScraper\Articles.aspx.cs">
       <DependentUpon>Articles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -344,6 +346,7 @@
     <Compile Include="ArticleScraper\Articles.aspx.designer.cs">
       <DependentUpon>Articles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ArticleScraper\PaginationItem.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
