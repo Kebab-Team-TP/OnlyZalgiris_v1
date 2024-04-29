@@ -48,7 +48,7 @@
                                     <a href="<%= ResolveUrl("~/ArticleScraper/Articles.aspx") %>">Articles</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#">Forum (WiP)</a>
+                                    <a href="<%= ResolveUrl("~/Forum.aspx") %>">Forum (WiP)</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="https://zalgiris.koobin.com/?id_tipo_evento=3">Tickets</a>
