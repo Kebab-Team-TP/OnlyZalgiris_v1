@@ -19,7 +19,8 @@ namespace Zalgiris
         {
             if (!IsPostBack)
             {
-                RegisterAsyncTask(new PageAsyncTask(DisplayLiveScores));
+                //sutvarkyti!!!
+               // RegisterAsyncTask(new PageAsyncTask(DisplayLiveScores));
             }
         }
         private BrowserType GetBrowserType(HttpRequest request)
@@ -46,8 +47,11 @@ namespace Zalgiris
             }
         }
 
-
-
+        /// <summary>
+        /// Fix for all browsers
+        /// </summary>
+        /// <returns></returns>
+        
         private async Task DisplayLiveScores()
         {
             string url = "https://www.livescore.in/lt/komanda/zalgiris-kaunas/6JbDYvUs/";

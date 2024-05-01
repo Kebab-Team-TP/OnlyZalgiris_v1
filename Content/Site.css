@@ -922,3 +922,31 @@ h3.text-dark {
 .float-left {
     position: center;
 }
+/* Style for dropdown */
+select {
+    padding: 8px 16px;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Rounded borders */
+    background-color: white; /* White background */
+    color: black; /* Black text color */
+    font-size: 16px; /* Larger font size for readability */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    -webkit-appearance: none; /* Disables native dropdown styling */
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer; /* Cursor indicates it's clickable */
+}
+
+/* Arrow indicator for dropdowns (optional) */
+select {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 4 5"><path fill="%23000" d="M2 0L0 2h4zM2 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px 12px;
+}
+
+    /* Focus and hover styles for interaction feedback */
+    select:focus, select:hover {
+        border-color: #007bff; /* Blue border for focus/hover */
+        outline: none; /* Removes default focus outline */
+    }

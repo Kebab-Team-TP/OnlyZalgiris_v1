@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Forum" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Forum.aspx.cs" Inherits="Zalgiris.Forum" %>
+﻿<%@ Page Title="Forum" Language="C#" MasterPageFile="~/Site.Master"  enableEventValidation="false" Async="true" AutoEventWireup="true" CodeBehind="Forum.aspx.cs" Inherits="Zalgiris.Forum" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -74,6 +74,8 @@
     </style>
     <div class="container">
     <h2 class="forum-header "><%: Title %></h2>
+        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" CssClass="dropdown-style"></asp:DropDownList>
+
             <div class="forum-container">
                 <asp:Label ID="MessagesField" runat="server" Text=""></asp:Label>
                 <asp:TextBox ID="MessageText" CssClass="forum-input" runat="server" OnTextChanged="MessageText_TextChanged"></asp:TextBox>
