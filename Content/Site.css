@@ -445,6 +445,7 @@ h1.heading {
     padding: 5px; /* Add padding for better visibility */
     font-size: 20px;
     font-weight: 600;
+    text-align:left;
     color: #3db36a;
 }
 
