@@ -18,9 +18,11 @@ namespace Zalgiris
 {
     public partial class Forum : System.Web.UI.Page
     {
+        static string relativePathusers = "App_Data/Users.json";
         static string relativePath = "App_Data/Forum.json";
         static string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         static string fullPath = Path.Combine(currentDirectory, relativePath);
+        static string fullPathUsers = Path.Combine(currentDirectory, relativePathusers);
         protected async void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserName"] == null)
@@ -105,18 +107,7 @@ namespace Zalgiris
                 MessagesField.Text = ex.Message;
             }
         }
-        protected void FillBlock(List<Message> Messages)
-        {
-            StringBuilder MessagesHTML = new StringBuilder();
-            string user = Session["UserName"] != null ? (string)Session["UserName"] : "";
 
-            foreach (Message message in Messages)
-            {
-                string MessageBlock = String.Format("<div class='message-block {2}'><span class='date'>{1}</span><p class='text'>{0}</p></div>", message.text, message.datetime, message.author == user ? "author":"");
-                MessagesHTML.Append(MessageBlock);
-            }
-            MessagesField.Text = MessagesHTML.ToString();
-        }
 
 
 
@@ -180,6 +171,88 @@ namespace Zalgiris
         {
             Page_Load(sender, e); // This will re-trigger the Page_Load with the new filter applied.
         }
+        protected void SaveProfilePicture_Click(object sender, EventArgs e)
+        {
+            string selectedPictureUrl = ProfilePictureSelection.SelectedValue;
+            UpdateUserProfilePicture(Session["UserName"].ToString(), selectedPictureUrl);
+        }
+
+        private void UpdateUserProfilePicture(string username, string pictureUrl)
+        {
+            List<User> users = ReadUsers();  // Deserialize JSON to user list
+            var user = users.FirstOrDefault(u => u.Username == username);
+            if (user != null)
+            {
+                user.ProfilePictureUrl = pictureUrl;
+                string json = JsonSerializer.Serialize(users);
+                // Debugging output or log the json to see what's being written
+                System.Diagnostics.Debug.WriteLine(json);
+                File.WriteAllText(fullPathUsers, json); // Ensure fullPath is correctly pointing to your JSON file
+            }
+            else
+            {
+                // Log or handle the case where user is not found
+                System.Diagnostics.Debug.WriteLine("User not found: " + username);
+            }
+        }
+
+
+        private List<User> ReadUsers()
+        {
+            using (StreamReader reader = new StreamReader(fullPathUsers))
+            {
+                return JsonSerializer.Deserialize<List<User>>(reader.ReadToEnd());
+            }
+        }
+        protected void FillBlock(List<Message> Messages)
+{
+    StringBuilder MessagesHTML = new StringBuilder();
+    string currentUser = Session["UserName"] != null ? (string)Session["UserName"] : "";
+
+    foreach (Message message in Messages)
+    {
+        string userProfilePic = GetUserProfilePicture(message.author);
+        string imageTag = String.IsNullOrEmpty(userProfilePic) ? "<img src='Images/default-avatar-icon-of-social-media-user-vector.jpg' alt='Profile Pic' style='width:50px;height:50px;'>" : $"<img src='{userProfilePic}' alt='Profile Pic' style='width:50px;height:50px;'>";
+
+        // Add a condition to check if the message is from the current user
+        if (message.author == currentUser)
+        {
+            // Author's message: Image and text should be right aligned
+            string MessageBlock = $"<div class='message-block author'>" +
+                                  $"<div class='message-content'>" +
+                                  $"<span class='date'>{message.datetime}</span>" +
+                                  $"<p class='text'>{message.text}</p>" +
+                                  $"</div>" +
+                                  $"<div class='profile-pic'>{imageTag}</div>" + // Image goes to the right of the text
+                                  $"</div>";
+            MessagesHTML.Append(MessageBlock);
+        }
+        else
+        {
+            // Other user's message: Image to the left of the text
+            string MessageBlock = $"<div class='message-block'>" +
+                                  $"<div class='profile-pic'>{imageTag}</div>" +
+                                  $"<div class='message-content'>" +
+                                  $"<span class='date'>{message.datetime}</span>" +
+                                  $"<p class='text'>{message.text}</p>" +
+                                  $"</div>" +
+                                  $"</div>";
+            MessagesHTML.Append(MessageBlock);
+        }
+    }
+    MessagesField.Text = MessagesHTML.ToString();
+}
+
+
+
+        private string GetUserProfilePicture(string username)
+        {
+            List<User> users = ReadUsers();
+            var user = users.FirstOrDefault(u => u.Username == username);
+            return user?.ProfilePictureUrl; // Return null if the user doesn't have a profile picture set
+        }
+
+
 
 
 

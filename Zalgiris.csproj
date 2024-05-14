@@ -269,9 +269,14 @@
     <Content Include="Images\6bc58ca0-7dfd-11ed-ab81-a71b60a80a19.jpg" />
     <Content Include="Images\acbe203e2fca0aaf17cc29402ff7c3dd.jpg" />
     <Content Include="Images\ad318d629cf51b6c11f09f63296b0268.jpg" />
+    <Content Include="Images\ba9c6efa74b0cd63ca72805ee4ca5644.png" />
+    <Content Include="Images\default-avatar-icon-of-social-media-user-vector.jpg" />
     <Content Include="Images\F3zZR3NWYAAP4Ph.jpeg" />
+    <Content Include="Images\kauno-zalgirispristate-nauja-logotipa-64f9ee6196407.jpg" />
     <Content Include="Images\OZ_loginBG.jpg" />
+    <Content Include="Images\paveikslelis-393083-crop700x700.jpg" />
     <Content Include="Images\unnamed.jpg" />
+    <Content Include="Images\zal1_13.jpg" />
     <Content Include="Images\ZalgirioArena20160420-1.jpg" />
     <Content Include="LICENSE" />
     <Content Include="Login.aspx" />

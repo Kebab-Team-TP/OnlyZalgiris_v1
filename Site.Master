@@ -53,6 +53,9 @@
                                 <li class="nav-item">
                                     <a href="https://zalgiris.koobin.com/?id_tipo_evento=3">Tickets</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="https://shop.zalgiris.lt/">Shop</a>
+                                </li>
 
                                 <% if (Session["authenticated"] != null && (bool)Session["authenticated"] == true)
                                     { %>
