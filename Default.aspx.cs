@@ -10,17 +10,76 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System.Web;
 using Zalgiris.Models;
+using Newtonsoft.Json.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text.RegularExpressions;
+using OpenQA.Selenium.DevTools.V121.IO;
+using System.Web.UI.WebControls;
+using System.IO;
 
 namespace Zalgiris
 {
     public partial class _Default : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected async void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
+                await DD();
                 //sutvarkyti!!!
-               // RegisterAsyncTask(new PageAsyncTask(DisplayLiveScores));
+                //RegisterAsyncTask(new PageAsyncTask(DisplayLiveScores));
+            }
+        }
+        private async Task DD()
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://sportapi7.p.rapidapi.com/api/v1/sport/basketball/events/live"),
+                Headers =
+    {
+            { "x-rapidapi-key", "a692ca4ebfmshb8c46d91633cf2dp19aa10jsn2f1f1530f304" },
+            { "x-rapidapi-host", "sportapi7.p.rapidapi.com" },
+        },
+            };
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                string teamname = "Zalgiris Kaunas";
+                string pattern = "\"homeTeam\":{\"name\":\"(.+?)\".+?\"awayTeam\":{\"name\":\"(.+?)\".+?.+?homeScore\":{\"current\":(\\d+).+?awayScore\":{\"current\":(\\d+)";
+                StringBuilder st= new StringBuilder();
+                Match RealMatch = null;
+                foreach (Match match in Regex.Matches(body, pattern, RegexOptions.None, TimeSpan.FromSeconds(1)))
+                {
+                    if (match.Groups[1].ToString().Equals(teamname) || match.Groups[2].ToString().Equals(teamname))
+                    {
+                        RealMatch = match;
+                    }
+                }
+                if (RealMatch != null)
+                {
+                    st.Append(String.Format("<div>{0} - {1}</div>",
+                    RealMatch.Groups[1], RealMatch.Groups[2]));
+
+                    st.Append(String.Format("<div>{0} - {1}</div>",
+                                      RealMatch.Groups[3], RealMatch.Groups[4]));
+                }
+                else
+                    st.Append("<div>No live matches at the moment</div>");
+                
+                LiveScoresLiteral.Text = st.ToString();
+            }
+
+        }
+        private async Task<string> CallUrl(string fullUrl)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                return await client.GetStringAsync(fullUrl);
             }
         }
         private BrowserType GetBrowserType(HttpRequest request)
