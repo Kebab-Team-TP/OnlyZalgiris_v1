@@ -27,7 +27,13 @@ namespace Zalgiris
 
             if (!IsPostBack)
             {
-                await DD();
+                try
+                {
+                    await DD();
+                }
+                catch(Exception ex){
+                    LiveScoresLiteral.Text = ex.Message;
+                }
                 //sutvarkyti!!!
                 //RegisterAsyncTask(new PageAsyncTask(DisplayLiveScores));
             }
@@ -40,16 +46,16 @@ namespace Zalgiris
                 Method = HttpMethod.Get,
                 RequestUri = new Uri("https://sportapi7.p.rapidapi.com/api/v1/sport/basketball/events/live"),
                 Headers =
-    {
-            { "x-rapidapi-key", "a692ca4ebfmshb8c46d91633cf2dp19aa10jsn2f1f1530f304" },
-            { "x-rapidapi-host", "sportapi7.p.rapidapi.com" },
-        },
+                {
+                    { "x-rapidapi-key", "a692ca4ebfmshb8c46d91633cf2dp19aa10jsn2f1f1530f304" },
+                    { "x-rapidapi-host", "sportapi7.p.rapidapi.com" },
+                },
             };
             using (var response = await client.SendAsync(request))
             {
-                response.EnsureSuccessStatusCode();
+                //response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
-                string teamname = "Zalgiris Kaunas";
+                string teamname = "Kauno Žalgiris";
                 string pattern = "\"homeTeam\":{\"name\":\"(.+?)\".+?\"awayTeam\":{\"name\":\"(.+?)\".+?.+?homeScore\":{\"current\":(\\d+).+?awayScore\":{\"current\":(\\d+)";
                 StringBuilder st= new StringBuilder();
                 Match RealMatch = null;
@@ -57,8 +63,9 @@ namespace Zalgiris
                 {
                     if (match.Groups[1].ToString().Equals(teamname) || match.Groups[2].ToString().Equals(teamname))
                     {
-                        RealMatch = match;
+                       RealMatch = match;
                     }
+
                 }
                 if (RealMatch != null)
                 {
