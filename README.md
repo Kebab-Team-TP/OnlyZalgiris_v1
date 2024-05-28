@@ -33,6 +33,6 @@ Projektą kuria ir palaiko:
 
 ---
 
-Dėkojame, kad naudojatės "OnlyŽalgiris"! Tikimės, kad ši svetainė taps jūsų pagrindiniu informacijos šaltiniu apie Kauno "Žalgirio" komandą ir padės jums dar labiau mėgautis sirgaliaus patirtimi. Jei turite klausimų ar pasiūlymų, prašome susisiekti su mumis per kontaktų formą svetainėje.
+Dėkojame, kad naudojatės "OnlyŽalgiris"! Tikimės, kad ši svetainė taps jūsų pagrindiniu informacijos šaltiniu apie Kauno "Žalgirio" komandą ir padės jums dar labiau mėgautis sirgaliaus patirtimi. Jei turite klausimų ar pasiūlymų, prašome susisiekti.
 
 ---
