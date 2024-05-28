@@ -36,10 +36,3 @@ Projektą kuria ir palaiko:
 Dėkojame, kad naudojatės "OnlyŽalgiris"! Tikimės, kad ši svetainė taps jūsų pagrindiniu informacijos šaltiniu apie Kauno "Žalgirio" komandą ir padės jums dar labiau mėgautis sirgaliaus patirtimi. Jei turite klausimų ar pasiūlymų, prašome susisiekti su mumis per kontaktų formą svetainėje.
 
 ---
-
-### How to Create a Dash-Through
-
-To create a "dash-through" or strikethrough text in Markdown, use double tilde symbols `~~` before and after the text you want to strike through. For example:
-
-```markdown
-~~This text will be strikethrough~~
