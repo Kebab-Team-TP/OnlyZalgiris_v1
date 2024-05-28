@@ -23,6 +23,10 @@
 - **Aktualios Naujienos:** Greitai ir lengvai pasiekiamos naujienos bei aktualūs straipsniai apie komandą ir krepšinį.
 - **Lengvas Bilietų Pirkimas:** Patogiai įsigyjami bilietai į rungtynes bei komandos atributika tiesiogiai iš svetainės.
 
+### Projekto Naudojimas
+
+Projektą šiuo metu galima paleisti per localhost serverį. Tam galima naudoti Visual Studio code extension pavadinimu live server arba paprasčiausiai paleisti projektą per Visual Studio. Atsivėrus svetainei galima naudotis visu jos funkcionalumu išskyrus forumu. Norint naudotis forumu, reikia susikurti paskyrą ir užsiregistruoti. Tuomet pačiame forume galima pasikeisti profilio nuotrauką bei filtruoti žinutes.
+
 ### Komandos Nariai
 
 Projektą kuria ir palaiko:
